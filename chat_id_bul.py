@@ -1,6 +1,14 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-BOT_TOKEN = "8992270856:AAHp-z-f8TxmULu2ZavqDV8BI3iBAh9HYIY"
+# .env dosyasını yükle
+load_dotenv()
+
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+if not BOT_TOKEN:
+    print("⚠️ HATA: TELEGRAM_BOT_TOKEN .env dosyasında bulunamadı.")
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
 
